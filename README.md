@@ -1,1 +1,2 @@
-#[ModKit Wiki](../../wiki)
+#Bitwise Operators
+Bitwise Operators mod for KTANE
