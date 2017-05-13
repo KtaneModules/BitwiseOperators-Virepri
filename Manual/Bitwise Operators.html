@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Keep Talking and Nobody Explodes Example Manual Page</title>
+    <meta name="viewport" content="initial-scale=1"> 
+	<link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<div class="section">
+    <div class="page page-bg-01">
+        		<div class="page-header">
+			<span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+			<span class="page-header-section-title">Bitwise Operators</span>
+		</div>
+        <div class="page-content">
+    	    <img src="img/Component.svg" class="diagram">
+            <h2>On the Subject of Bitwise Operators</h2>
+            <p class="flavour-text">
+					Nobody's favorite kind of math. Who even likes math, Anyway?
+			</p>
+            
+            <ul>
+                <li>There are 4 total screens on the module
+                    <ol type="1">
+                        <li>Byte 1</li>
+                        <li>Bitwise operator (AND, OR, XOR, FLIP)</li>
+                        <li>Byte 2</li>
+                        <li>Result input</li>
+                    </ol>
+                </li>
+                <li>Use the two bytes and the operator to determine the answer.</li>
+            </ul>
+
+			<p>Should be relatively simple. Do the math below, input the answer.</p>
+            
+            <p>Here is a table of examples and explanations of each bitwise operator.</p>
+            <table>
+                <tr>
+                    <th>Info</th>
+                    <th>AND</th>
+                    <th>OR</th>
+                    <th>XOR</th>
+                    <th>FLIP</th>
+                </tr>
+                <tr>
+                    <td>HOW</td>
+                    <td>Going bit by bit, if both bits are 1, the return bit is 1. Otherwise, the return bit is 0.</td>
+                    <td>Going bit by bit, if either (or both) bit is 1, the return bit is 1. Otherwise, the return bit is 0.</td>
+                    <td>Going bit by bit, if either (but not both) bits are 1, the return bit is 1. Otherwise, the return bit is 0.</td>
+                    <td>Basically, ignore the second operator. The answer works regardless. Going bit by bit, the return bit is the opposite.</td>
+                </tr>
+                <tr>
+                    <td>MATH</td>
+                    <td>(bit1 == 1) && (bit2 == 1)</td>
+                    <td>(bit1 == 1) || (bit2 == 1)</td>
+                    <td>((bit1 == 1) && (bit2 == 0)) || ((bit1 == 0) && (bit2 == 1))</td>
+                    <td>bit1 = !bit1</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body></html>
