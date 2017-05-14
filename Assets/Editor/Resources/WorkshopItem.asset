@@ -11,8 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf2299c8864afe4ab42466f546ae20d, type: 3}
   m_Name: WorkshopItem
   m_EditorClassIdentifier: 
-  WorkshopPublishedFileID: 0
+  WorkshopPublishedFileID: 925533475
   Title: Bitwise Operators
-  Description: 
-  PreviewImage: {fileID: 0}
-  Tags: []
+  Description: "The Bitwise Operators mod requires the defuser and the experts to
+    cooperate in order to find the first two bytes as well as the operator to solve
+    each module!\r\n\r\nGithub: https://github.com/Virepri/BitwiseOperators\r\n\r\nManual:
+    https://www.dropbox.com/s/2qxksbz7q78txl1/Bitwise%20Operators.pdf?dl=0"
+  PreviewImage: {fileID: 2800000, guid: 4974bc676841cc54ab299b0c6df2fd0d, type: 3}
+  Tags:
+  - Regular Module

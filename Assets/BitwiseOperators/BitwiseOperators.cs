@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
@@ -71,7 +73,7 @@ public class BitwiseOperators : MonoBehaviour
 
         Debug.LogFormat("[Bitwise Operators #{0}] Byte #1 - {1}", moduleId, Convert.ToString(b1, 2).PadLeft(8, '0'));
         Debug.LogFormat("[Bitwise Operators #{0}] Byte #2 - {1}", moduleId, Convert.ToString(b2, 2).PadLeft(8, '0'));
-        Debug.LogFormat("[Bitwise Operators #{0}] Operator - {1}", moduleId, Operations[Operation]);
+        Debug.LogFormat("[Bitwise Operators #{0}] Operator - {1}", moduleId, Operations[operation]);
         Debug.LogFormat("[Bitwise Operators #{0}] Solution - {1}", moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'));
 
     }
@@ -164,7 +166,7 @@ public class BitwiseOperators : MonoBehaviour
         var commandList = command.ToLowerInvariant().Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
         if (commandList.Length != 2 || commandList[0] != "submit" || commandList[1].Length != 8)
             return null;
-        StringBuilder screen = new StringBuilder(Convert.ToString(osdat, 2).PadLeft(8, '0'));
+        StringBuilder screen = new StringBuilder(Convert.ToString(currentDisplay, 2).PadLeft(8, '0'));
         StringBuilder submit = new StringBuilder(commandList[1]);
 
         var buttonList = new List<KMSelectable>();
