@@ -24,9 +24,13 @@ public class BitwiseOperators : MonoBehaviour {
     public KMSelectable[] Inputs;
     public KMBombInfo kmbi;
 
+    private int moduleId;
+    private static int moduleIdCounter = 1;
+
 	void Start ()
-    {
-        
+	{
+	    moduleId = moduleIdCounter++;
+
         Submit.OnInteract = delegate () { OnSubmit(); return false; };
         for (int i = 0; i < Inputs.Length; i++)
         {
@@ -85,6 +89,11 @@ public class BitwiseOperators : MonoBehaviour {
                 solution = (byte)(~b1);
                 break;
         }
+
+        Debug.LogFormat("[Bitwise Operators #{0}] Byte #1 - {1}", moduleId, Convert.ToString(b1, 2).PadLeft(8, '0'));
+        Debug.LogFormat("[Bitwise Operators #{0}] Byte #2 - {1}", moduleId, Convert.ToString(b2, 2).PadLeft(8, '0'));
+        Debug.LogFormat("[Bitwise Operators #{0}] Operator - {1}", moduleId, Operations[Operation]);
+        Debug.LogFormat("[Bitwise Operators #{0}] Solution - {1}", moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'));
     }
 	
     void OnScreenManip(int button)
@@ -94,7 +103,7 @@ public class BitwiseOperators : MonoBehaviour {
 
         if (!isActivated)
         {
-            Debug.Log("Pressed button before module has been activated!");
+            Debug.LogFormat("[Bitwise Operators #{0}] Pressed button before module has been activated!", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
         }
         else
@@ -113,19 +122,19 @@ public class BitwiseOperators : MonoBehaviour {
 
         if (!isActivated)
         {
-            Debug.Log("Pressed button before module has been activated!");
+            Debug.LogFormat("[Bitwise Operators #{0}] Pressed button before module has been activated!", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
         }
         else
         {
-            Debug.Log("Solution is " + Convert.ToString(solution, 2).PadLeft(8,'0') + " answer is " + Convert.ToString(osdat,2).PadLeft(8,'0'));
+            Debug.LogFormat("[Bitwise Operators #{0}] Solution is {1} answer is {2}",moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'), Convert.ToString(osdat,2).PadLeft(8,'0'));
             if(osdat.Equals(solution))
             {
-                Debug.Log("Correctly performed bitwise op");
+                Debug.LogFormat("[Bitwise Operators #{0}] Correctly performed bitwise op", moduleId);
                 GetComponent<KMBombModule>().HandlePass();
             } else
             {
-                Debug.Log("Incorrectly performed bitwise op");
+                Debug.LogFormat("[Bitwise Operators #{0}] Incorrectly performed bitwise op", moduleId);
                 GetComponent<KMBombModule>().HandleStrike();
             }
         }
