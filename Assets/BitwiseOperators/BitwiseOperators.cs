@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
@@ -24,12 +26,12 @@ public class BitwiseOperators : MonoBehaviour
     public KMSelectable[] Inputs;
     public KMBombInfo BombInfo;
 
-    int moduleId;
-    static int moduleIdCounter = 1;
+    private int moduleId;
+    private static int moduleIdCounter = 1;
 
-    void Start()
-    {
-        moduleId = moduleIdCounter++;
+	void Start ()
+	{
+	    moduleId = moduleIdCounter++;
 
         Submit.OnInteract = delegate () { OnSubmit(); return false; };
         for (int i = 0; i < Inputs.Length; i++)
@@ -68,7 +70,12 @@ public class BitwiseOperators : MonoBehaviour
                 break;
         }
 
-        Debug.LogFormat("[Bitwise Operators #{0}] Solution is: {1}", moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'));
+
+        Debug.LogFormat("[Bitwise Operators #{0}] Byte #1 - {1}", moduleId, Convert.ToString(b1, 2).PadLeft(8, '0'));
+        Debug.LogFormat("[Bitwise Operators #{0}] Byte #2 - {1}", moduleId, Convert.ToString(b2, 2).PadLeft(8, '0'));
+        Debug.LogFormat("[Bitwise Operators #{0}] Operator - {1}", moduleId, Operations[operation]);
+        Debug.LogFormat("[Bitwise Operators #{0}] Solution - {1}", moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'));
+
     }
 
     private void SetAnswerScreen()
@@ -84,7 +91,8 @@ public class BitwiseOperators : MonoBehaviour
 
         if (!isActivated)
         {
-            Debug.LogFormat("[Bitwise Operators #{0}] Pressed button before module has been activated.", moduleId);
+            Debug.LogFormat("[Bitwise Operators #{0}] Pressed button before module has been activated!", moduleId);
+
             GetComponent<KMBombModule>().HandleStrike();
         }
         else
@@ -101,7 +109,7 @@ public class BitwiseOperators : MonoBehaviour
 
         if (!isActivated)
         {
-            Debug.LogFormat("[Bitwise Operators #{0}] Pressed button before module has been activated.", moduleId);
+            Debug.LogFormat("[Bitwise Operators #{0}] Pressed button before module has been activated!", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
         }
         else
@@ -114,7 +122,8 @@ public class BitwiseOperators : MonoBehaviour
             }
             else
             {
-                Debug.LogFormat("[Bitwise Operators #{0}] Incorrect answer.", moduleId);
+                Debug.LogFormat("[Bitwise Operators #{0}] Incorrectly performed bitwise op", moduleId);
+
                 GetComponent<KMBombModule>().HandleStrike();
             }
         }
@@ -150,5 +159,26 @@ public class BitwiseOperators : MonoBehaviour
 
         Debug.LogFormat("[Bitwise Operators #{0}] Second byte: {1}", moduleId, o);
         return Convert.ToByte(o, 2);
+    }
+
+    KMSelectable[] ProcessTwitchCommand(string command)
+    {
+        var commandList = command.ToLowerInvariant().Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+        if (commandList.Length != 2 || commandList[0] != "submit" || commandList[1].Length != 8)
+            return null;
+        StringBuilder screen = new StringBuilder(Convert.ToString(currentDisplay, 2).PadLeft(8, '0'));
+        StringBuilder submit = new StringBuilder(commandList[1]);
+
+        var buttonList = new List<KMSelectable>();
+        for (var i = 0; i < 8; i++)
+        {
+            if (!"01".Contains(submit[i].ToString()))
+                return null;
+            if (submit[i] != screen[i])
+                buttonList.Add(Inputs[i]);
+        }
+
+        buttonList.Add(Submit);
+        return buttonList.ToArray();
     }
 }
