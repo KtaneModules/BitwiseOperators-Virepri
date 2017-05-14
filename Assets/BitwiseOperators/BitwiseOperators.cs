@@ -127,7 +127,7 @@ public class BitwiseOperators : MonoBehaviour {
         }
         else
         {
-            Debug.LogFormat("[Bitwise Operators #{0}] Solution is {1} answer is {2}",moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'), Convert.ToString(osdat,2).PadLeft(8,'0'));
+            Debug.LogFormat("[Bitwise Operators #{0}] Correct solution is {1}, Submitted answer is {2}",moduleId, Convert.ToString(solution, 2).PadLeft(8, '0'), Convert.ToString(osdat,2).PadLeft(8,'0'));
             if(osdat.Equals(solution))
             {
                 Debug.LogFormat("[Bitwise Operators #{0}] Correctly performed bitwise op", moduleId);
