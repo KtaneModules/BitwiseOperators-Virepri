@@ -173,4 +173,25 @@ public class BitwiseOperators : MonoBehaviour {
 
         return Convert.ToByte(o, 2);
     }
+
+    KMSelectable[] ProcessTwitchCommand(string command)
+    {
+        var commandList = command.ToLowerInvariant().Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+        if (commandList.Length != 2 || commandList[0] != "submit" || commandList[1].Length != 8)
+            return null;
+        StringBuilder screen = new StringBuilder(Convert.ToString(osdat, 2).PadLeft(8, '0'));
+        StringBuilder submit = new StringBuilder(commandList[1]);
+
+        var buttonList = new List<KMSelectable>();
+        for (var i = 0; i < 8; i++)
+        {
+            if (!"01".Contains(submit[i].ToString()))
+                return null;
+            if (submit[i] != screen[i])
+                buttonList.Add(Inputs[i]);
+        }
+
+        buttonList.Add(Submit);
+        return buttonList.ToArray();
+    }
 }
