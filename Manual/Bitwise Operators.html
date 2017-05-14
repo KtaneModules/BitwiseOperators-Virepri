@@ -23,27 +23,71 @@
 			</p>
             
             <ul>
-                <li>There are 4 total screens on the module
+                <li>There are 2 total screens on the module
                     <ol type="1">
-                        <li>Byte 1</li>
-                        <li>Bitwise operator (AND, OR, XOR, FLIP)</li>
-                        <li>Byte 2</li>
+                        <li>Bitwise operator (AND, OR, XOR, NOT)</li>
                         <li>Result input</li>
                     </ol>
                 </li>
-                <li>Use the two bytes and the operator to determine the answer.</li>
+                <li>Use the two bytes obtained via sidework. and the operator to determine the answer.</li>
             </ul>
-
-			<p>Should be relatively simple. Do the math below, input the answer.</p>
-            
-            <p>Here is a table of examples and explanations of each bitwise operator.</p>
+            <p>Filling out the below tables with a '1' for each true piece of data will give you bytes 1 and two.</p>
+            <p></p>
+            <p>Obtaining byte 1:</p>
+            <table>
+                <tr>
+                    <td>No AA bats.</td>
+                    <td>Parallel port</td>
+                    <td>lit indicator NSA</td>
+                    <td>More modules than you have (starting) time</td>
+                    <td>More than one lit indicator</td>
+                    <td>Number of modules divisible by 3</td>
+                    <td>Less than 2 D batteries</td>
+                    <td>less than 4 ports</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </table>
+			<p>Obtaining byte 2:</p>
+            <table>
+                <tr>
+                    <td>1 or more D battery</td>
+                    <td>3+ ports</td>
+                    <td>2 battery containers or more</td>
+                    <td>lit indicator BOB</td>
+                    <td>more than one unlit indicator</td>
+                    <td>Odd serial number</td>
+                    <td>Even number of modules</td>
+                    <td>2+ batteries</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </table>
+            <p></p>
+            <p>Here is a table of explanations of each bitwise operator.</p>
             <table>
                 <tr>
                     <th>Info</th>
                     <th>AND</th>
                     <th>OR</th>
                     <th>XOR</th>
-                    <th>FLIP</th>
+                    <th>NOT</th>
                 </tr>
                 <tr>
                     <td>HOW</td>
